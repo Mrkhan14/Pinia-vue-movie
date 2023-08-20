@@ -19,12 +19,16 @@
       <h3>All Movies (count {{ movieStore.kinolarSoni }})</h3>
       <Movie v-for="movie of movieStore.movies" :key="movie.id" :movieP="movie" />
     </div>
-    <div class="search" v-else>Search</div>
+    <div class="search" v-else>
+      <Search />
+
+    </div>
   </main>
 </template>
 
 <script setup>
 import Movie from "./components/Movie.vue";
+import Search from "./components/Search.vue";
 import { useMovieStore } from "./stores/MovieStore";
 
 const setTab = (id) => {

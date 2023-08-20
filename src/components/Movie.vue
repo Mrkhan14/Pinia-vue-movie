@@ -9,12 +9,18 @@
 
       <span class="movie-overview">{{ movieP.overview }}</span>
 
-      <div class="movie-buttons">
+      <span class="movie-overview">Reting {{ movieP.vote_average }}</span>
+
+      <div class="movie-buttons" v-if="!isSearch">
         <button class="btn movie-buttons-watched" @click="movieStore.toggleWatched(movieP.id)">
           <span v-if="!movieP.isWatched">Watched</span>
           <span v-else>Unwatched</span>
         </button>
         <button class="btn movie-buttons-delete" @click="movieStore.deletMovie(movieP.id)">Delete</button>
+      </div>
+
+      <div class="movie-buttons" v-else>
+        <button class="btn btn_green">Add</button>
       </div>
     </div>
   </div>
@@ -29,6 +35,11 @@ const props = defineProps({
     type: Object,
     required: true,
     default: () => { },
+  },
+  isSearch: {
+    type: Boolean,
+    required: false,
+    default: false,
   },
 });
 </script>
