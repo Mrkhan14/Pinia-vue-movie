@@ -21,7 +21,6 @@
     </div>
     <div class="search" v-else>
       <Search />
-
     </div>
   </main>
 </template>
