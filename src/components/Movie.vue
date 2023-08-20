@@ -6,19 +6,24 @@
       <div class="movie-name">
         {{ movieP.original_title }} ({{ movieP.release_date }})
       </div>
+
       <span class="movie-overview">{{ movieP.overview }}</span>
+
       <div class="movie-buttons">
-        <button class="btn movie-buttons-watched">
+        <button class="btn movie-buttons-watched" @click="movieStore.toggleWatched(movieP.id)">
           <span v-if="!movieP.isWatched">Watched</span>
           <span v-else>Unwatched</span>
         </button>
-        <button class="btn movie-buttons-delete">Delete</button>
+        <button class="btn movie-buttons-delete" @click="movieStore.deletMovie(movieP.id)">Delete</button>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
+import { useMovieStore } from '../stores/MovieStore';
+const movieStore = useMovieStore()
+
 const props = defineProps({
   movieP: {
     type: Object,
