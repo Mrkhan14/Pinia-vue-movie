@@ -13,8 +13,11 @@
       </button>
     </div>
     <div class="movies" v-if="movieStore.activeTab === 1">
-      <h3>All Movies</h3>
-      <Movie v-for="movie of movieStore.movies" :key="movie.id" :movie="movie" />
+      <h3>All Movies (count {{ movieStore.korilganKinos.length }})</h3>
+      <Movie v-for="movie of movieStore.korilganKinos" :key="movie.id" :movieP="movie" />
+
+      <h3>All Movies (count {{ movieStore.kinolarSoni }})</h3>
+      <Movie v-for="movie of movieStore.movies" :key="movie.id" :movieP="movie" />
     </div>
     <div class="search" v-else>Search</div>
   </main>

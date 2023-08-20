@@ -1,17 +1,15 @@
 <template>
   <div class="movie">
-    <img
-      :src="`https://image.tmdb.org/t/p/w300_and_h450_bestv2${movie.poster_path}`"
-      :alt="movie.original_title"
+    <img :src="`https://image.tmdb.org/t/p/w300_and_h450_bestv2${movieP.poster_path}`" :alt="movieP.original_title"
       class="movie-img" />
     <div>
       <div class="movie-name">
-        {{ movie.original_title }} ({{ movie.release_date }})
+        {{ movieP.original_title }} ({{ movieP.release_date }})
       </div>
-      <span class="movie-overview">{{ movie.overview }}</span>
+      <span class="movie-overview">{{ movieP.overview }}</span>
       <div class="movie-buttons">
         <button class="btn movie-buttons-watched">
-          <span v-if="!movie.isWatched">Watched</span>
+          <span v-if="!movieP.isWatched">Watched</span>
           <span v-else>Unwatched</span>
         </button>
         <button class="btn movie-buttons-delete">Delete</button>
@@ -22,10 +20,10 @@
 
 <script setup>
 const props = defineProps({
-  movie: {
+  movieP: {
     type: Object,
     required: true,
-    default: () => {},
+    default: () => { },
   },
 });
 </script>
