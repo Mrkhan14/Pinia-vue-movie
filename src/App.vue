@@ -13,10 +13,10 @@
       </button>
     </div>
     <div class="movies" v-if="movieStore.activeTab === 1">
-      <h3>All Movies (count {{ movieStore.korilganKinos.length }})</h3>
-      <Movie v-for="movie of movieStore.korilganKinos" :key="movie.id" :movieP="movie" />
+      <h3>All Movies (count {{ movieStore.watchedMovies.length }})</h3>
+      <Movie v-for="movie of movieStore.watchedMovies" :key="movie.id" :movieP="movie" />
 
-      <h3>All Movies (count {{ movieStore.kinolarSoni }})</h3>
+      <h3>All Movies (count {{ movieStore.totalCountMovies }})</h3>
       <Movie v-for="movie of movieStore.movies" :key="movie.id" :movieP="movie" />
     </div>
     <div class="search" v-else>
@@ -31,7 +31,7 @@ import Search from "./components/Search.vue";
 import { useMovieStore } from "./stores/MovieStore";
 
 const setTab = (id) => {
-  movieStore.setActioneTab(id);
+  movieStore.setActiveTab(id);
 }
 
 const movieStore = useMovieStore();
